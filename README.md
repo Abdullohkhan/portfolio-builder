@@ -2,24 +2,24 @@
 
 Abdulmajid Sharipovning portfolio loyihalari bitta monorepoda.
 
-| Papka | Texnologiya | Manba repo |
-|---|---|---|
-| `apps/react-portfolio` | React 19, TypeScript, Vite, Tailwind, MUI, Redux | `portfolio-demo-1` (`portfolio-demo-2` bilan kodi bir xil) |
-| `apps/bootstrap-portfolio` | Vite, Bootstrap, SCSS | `portfolio` (`portfolio-1` ning yangi versiyasi) |
-| `apps/jack-portfolio` | HTML, CSS, JS | `jack-portfolio` (codewithsadee shabloni, litsenziyasiz — "free to use") |
+| Papka | Texnologiya |
+|---|---|
+| `apps/portfolio-v1` | HTML, CSS, JS (codewithsadee shabloni, "free to use") |
+| `apps/portfolio-v2` | Vite, Bootstrap, SCSS |
+| `apps/portfolio-v3` | React 19, TypeScript, Vite, Tailwind, MUI, Redux |
 
 ## Ishga tushirish
 
 ```bash
 npm run install:all
-npm run dev:react        # React portfolio
-npm run dev:bootstrap    # Bootstrap portfolio
-npm run dev:jack         # Jack portfolio (statik)
+npm run dev:v1    # statik
+npm run dev:v2
+npm run dev:v3
 ```
 
-## Bootstrap portfolio — kontakt formasi
+## portfolio-v2 — kontakt formasi
 
-Forma xabarlarni Telegram botga yuboradi. `apps/bootstrap-portfolio/.env`
+Forma xabarlarni Telegram botga yuboradi. `apps/portfolio-v2/.env`
 fayl yarating (`.env.example` dan nusxa) va to'ldiring:
 
 ```

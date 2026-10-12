@@ -2,11 +2,11 @@
   "name": "portfolio-builder",
   "private": true,
   "scripts": {
-    "install:all": "npm --prefix apps/react-portfolio install && npm --prefix apps/bootstrap-portfolio install",
-    "dev:react": "npm --prefix apps/react-portfolio run dev",
-    "dev:bootstrap": "npm --prefix apps/bootstrap-portfolio start",
-    "dev:jack": "npx serve apps/jack-portfolio",
-    "build:react": "npm --prefix apps/react-portfolio run build",
-    "build:bootstrap": "npm --prefix apps/bootstrap-portfolio run build"
+    "install:all": "npm --prefix apps/portfolio-v3 install && npm --prefix apps/portfolio-v2 install",
+    "dev:v3": "npm --prefix apps/portfolio-v3 run dev",
+    "dev:v2": "npm --prefix apps/portfolio-v2 start",
+    "dev:v1": "npx serve apps/portfolio-v1",
+    "build:v3": "npm --prefix apps/portfolio-v3 run build",
+    "build:v2": "npm --prefix apps/portfolio-v2 run build"
   }
 }
