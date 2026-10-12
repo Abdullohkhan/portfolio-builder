@@ -1,31 +1,29 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
 import type { ContactState, ContactFormData } from '../types';
 
-// ═══════════════════════════════════════════════════
-//  🔧 TELEGRAM BOT CONFIG — Replace these values!
-// ═══════════════════════════════════════════════════
-//  1. Open Telegram → @BotFather → /newbot → copy TOKEN
-//  2. Send a message to your bot, then visit:
-//     https://api.telegram.org/bot<TOKEN>/getUpdates
-//     Find "chat":{"id": XXXXXX} → that's your CHAT_ID
-// ═══════════════════════════════════════════════════
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-const TELEGRAM_CHAT_ID   = 'YOUR_CHAT_ID_HERE';
+// Telegram bot settings come from .env (see .env.example):
+//   VITE_BOT_TOKEN  — token from @BotFather
+//   VITE_CHAT_ID    — chat or group id that receives the messages
+// Without them the form works in demo mode and sends nothing.
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_BOT_TOKEN as string | undefined;
+const TELEGRAM_CHAT_ID   = import.meta.env.VITE_CHAT_ID as string | undefined;
 
 export const sendContactMessage = createAsyncThunk(
   'contact/send',
   async (data: ContactFormData, { rejectWithValue }) => {
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+      await new Promise((r) => setTimeout(r, 600));
+      return { demo: true };
+    }
     try {
       const text = [
-        '🌟 *Yangi xabar — Portfolio saytidan!*',
+        '🌟 New message from the portfolio',
         '',
-        `👤 *Ism:* ${data.name}`,
-        `📧 *Email:* ${data.email}`,
-        `📌 *Mavzu:* ${data.subject || '—'}`,
+        `👤 Name: ${data.name}`,
+        `📧 Email: ${data.email}`,
+        `📌 Subject: ${data.subject || '—'}`,
         '',
-        `💬 *Xabar:*\n${data.message}`,
-        '',
-        '_Abdulloh Portfolio saytidan yuborildi_',
+        `💬 Message:\n${data.message}`,
       ].join('\n');
 
       const res = await fetch(
@@ -33,17 +31,14 @@ export const sendContactMessage = createAsyncThunk(
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'Markdown' }),
+          body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text }),
         }
       );
 
-      if (!res.ok) {
-        const err = await res.json() as { description?: string };
-        return rejectWithValue(err.description ?? 'Telegram API xatosi');
-      }
-      return true;
+      if (!res.ok) return rejectWithValue('error' as const);
+      return { demo: false };
     } catch {
-      return rejectWithValue('Tarmoq xatosi. Qayta urinib ko\'ring.');
+      return rejectWithValue('network' as const);
     }
   }
 );
@@ -53,6 +48,7 @@ const blank: ContactFormData = { name: '', email: '', subject: '', message: '' }
 const initialState: ContactState = {
   formData: blank,
   status: 'idle',
+  demo: false,
   errorMessage: null,
 };
 
@@ -69,8 +65,8 @@ const contactSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(sendContactMessage.pending,   (state) => { state.status = 'loading'; state.errorMessage = null; })
-      .addCase(sendContactMessage.fulfilled, (state) => { state.status = 'success'; state.formData = blank; })
-      .addCase(sendContactMessage.rejected,  (state, action) => { state.status = 'error'; state.errorMessage = action.payload as string; });
+      .addCase(sendContactMessage.fulfilled, (state, action) => { state.status = 'success'; state.demo = action.payload.demo; state.formData = blank; })
+      .addCase(sendContactMessage.rejected,  (state, action) => { state.status = 'error'; state.errorMessage = (action.payload as 'error' | 'network' | undefined) ?? 'error'; });
   },
 });
 

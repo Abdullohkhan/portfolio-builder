@@ -1,4 +1,6 @@
 import { ThemeProvider } from './components/ThemeProvider';
+import { I18nProvider } from './i18n';
+import DemoToast from './components/DemoToast';
 import { useScrollSpy } from './hooks/useScrollSpy';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -27,14 +29,17 @@ const AppContent: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <DemoToast />
     </>
   );
 };
 
 const App: React.FC = () => (
-  <ThemeProvider>
-    <AppContent />
-  </ThemeProvider>
+  <I18nProvider>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  </I18nProvider>
 );
 
 export default App;

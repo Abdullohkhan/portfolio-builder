@@ -8,7 +8,10 @@ export interface ContactFormData {
 export interface ContactState {
   formData: ContactFormData;
   status: 'idle' | 'loading' | 'success' | 'error';
-  errorMessage: string | null;
+  /** true when no Telegram bot is configured and the form only simulates sending */
+  demo: boolean;
+  /** 'error' | 'network' — translated in the Contact component */
+  errorMessage: 'error' | 'network' | null;
 }
 
 export interface UIState {
@@ -17,15 +20,15 @@ export interface UIState {
   theme: 'light' | 'dark';
 }
 
+export type PortfolioCategory = 'webApp' | 'dashboard' | 'landing' | 'portfolio';
+
 export interface PortfolioItem {
   id: number;
-  title: string;
-  category: string;
+  category: PortfolioCategory;
   tech: string[];
   grad: string;
   liveUrl: string;
   githubUrl: string;
-  description: string;
 }
 
 export interface SkillItem {
@@ -38,8 +41,6 @@ export interface SkillItem {
 export interface TestimonialItem {
   id: number;
   name: string;
-  role: string;
   avatar: string;
   bg: string;
-  text: string;
 }

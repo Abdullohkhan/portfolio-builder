@@ -1,10 +1,18 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { UIState } from '../types';
 
+const readTheme = (): 'light' | 'dark' => {
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch { /* storage blocked */ }
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
 const initialState: UIState = {
   mobileMenuOpen: false,
   activeSection: 'home',
-  theme: 'light',
+  theme: readTheme(),
 };
 
 const uiSlice = createSlice({

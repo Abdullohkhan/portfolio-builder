@@ -1,130 +1,99 @@
-# 🚀 Abdulloh — Frontend Developer Portfolio
+# portfolio-v3
 
-Modern, fully responsive portfolio with **Dark/Light Mode** support.
+**🇺🇿 O'zbekcha** · [🇬🇧 English](#-english) · [🇷🇺 Русский](#-русский)
 
-## ⚡ Tech Stack (Latest Versions)
+**[➥ Live demo](https://abdullohkhan.github.io/portfolio-builder/v3/)**
 
-| Technology      | Version   |
-|----------------|-----------|
-| React           | **19.x**  |
-| TypeScript      | **5.8.x** |
-| Vite            | **6.x**   |
-| TailwindCSS     | **4.x**   |
-| Material UI     | **7.x**   |
-| Redux Toolkit   | **2.6.x** |
-| React Redux     | **9.x**   |
+## 🇺🇿 O'zbekcha
 
-> **TailwindCSS v4** uses the new `@tailwindcss/vite` plugin — no `postcss.config.js` or `tailwind.config.js` needed!
+React + TypeScript'dagi zamonaviy demo portfolio: 3 til (o'zbek, ingliz, rus), dark/light rejim, barcha qurilmalarga moslashuvchan.
 
----
+| Texnologiya | Versiya |
+|---|---|
+| React | 19.3 |
+| TypeScript | 6.0 |
+| Vite | 8.3 |
+| Tailwind CSS | 4.3 |
+| Material UI | 9.5 |
+| Redux Toolkit | 2.13 |
 
-## 📦 Installation
+**Ishga tushirish**
 
 ```bash
 npm install
-npm run dev
+npm run dev      # dev server
+npm run build    # dist/ ga build
+npm run lint
 ```
 
-Build for production:
-```bash
-npm run build
-npm run preview
-```
+**Kontakt forma.** `.env` bo'lmasa forma demo rejimda ishlaydi. Telegram botga yuborish uchun `.env.example` dan `.env` yarating (`VITE_BOT_TOKEN`, `VITE_CHAT_ID`). `.env` repoga tushmaydi.
+
+**Tuzilma:** matnlar `src/i18n/` (uz, en, ru), ma'lumotlar `src/utils/data.ts`, mavzu ranglari `src/utils/theme.ts`.
+
+> Ism (John Doe), email, manzil, loyihalar va fikrlar — demo ma'lumotlar.
+
+Ishlab chiqdi: [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)
 
 ---
 
-## 🌙 Dark / Light Mode
+## 🇬🇧 English
 
-- Toggle button in the Navbar (☀️ / 🌙)
-- Preference saved in `localStorage`
-- Automatically detects OS system preference on first visit
-- Managed via **Redux Toolkit** (`uiSlice.ts`)
+A modern React + TypeScript demo portfolio in 3 languages (Uzbek, English, Russian) with dark/light mode, responsive on every device.
 
----
+| Technology | Version |
+|---|---|
+| React | 19.3 |
+| TypeScript | 6.0 |
+| Vite | 8.3 |
+| Tailwind CSS | 4.3 |
+| Material UI | 9.5 |
+| Redux Toolkit | 2.13 |
 
-## 📨 Telegram Bot Setup
-
-Contact form sends messages directly to your Telegram.
-
-### Step 1 — Create a bot
-1. Open Telegram → search **@BotFather**
-2. Send `/newbot`, follow the steps
-3. Copy the **BOT TOKEN**
-
-### Step 2 — Get your Chat ID
-1. Send any message to your bot
-2. Visit: `https://api.telegram.org/bot<TOKEN>/getUpdates`
-3. Find `"chat":{"id": XXXXXXX}` → that's your **CHAT ID**
-
-### Step 3 — Add to project
-Open `src/store/contactSlice.ts` and replace:
-
-```ts
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-const TELEGRAM_CHAT_ID   = 'YOUR_CHAT_ID_HERE';
-```
-
----
-
-## ✏️ Customization
-
-| File | What to change |
-|------|----------------|
-| `src/utils/data.ts` | Projects, skills, testimonials, stats |
-| `src/components/Contact/index.tsx` | Email, location, Telegram link |
-| `src/components/Hero/index.tsx` | Social links (GitHub, LinkedIn, Telegram) |
-| `src/components/Footer/index.tsx` | Social links |
-| `src/components/About/index.tsx` | Bio text, timeline, facts |
-| `src/utils/theme.ts` | Color tokens for light/dark mode |
-
----
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── ThemeProvider/    ← Dark/Light context + toggle button
-│   ├── Navbar/
-│   ├── Hero/
-│   ├── About/
-│   ├── Skills/
-│   ├── Services/
-│   ├── Portfolio/
-│   ├── Testimonials/
-│   ├── Contact/          ← Telegram bot integration
-│   └── Footer/
-├── store/
-│   ├── index.ts
-│   ├── uiSlice.ts        ← theme, activeSection, mobileMenu
-│   └── contactSlice.ts   ← form state + Telegram API call
-├── hooks/
-│   ├── redux.ts
-│   └── useScrollSpy.ts
-├── types/index.ts
-├── utils/
-│   ├── data.ts           ← All content
-│   └── theme.ts          ← Light/Dark color tokens
-├── App.tsx
-├── main.tsx
-└── index.css             ← TailwindCSS v4 (CSS-first config)
-```
-
----
-
-## 🌐 Deploy
+**Run locally**
 
 ```bash
-# Vercel
-vercel --prod
-
-# Netlify
-netlify deploy --prod --dir=dist
-
-# GitHub Pages
-npm run build && gh-pages -d dist
+npm install
+npm run dev      # dev server
+npm run build    # build to dist/
+npm run lint
 ```
+
+**Contact form.** Without `.env` the form runs in demo mode. To deliver messages to a Telegram bot, copy `.env.example` to `.env` (`VITE_BOT_TOKEN`, `VITE_CHAT_ID`). `.env` is git-ignored.
+
+**Structure:** texts in `src/i18n/` (uz, en, ru), data in `src/utils/data.ts`, theme colors in `src/utils/theme.ts`.
+
+> The name (John Doe), email, location, projects and reviews are demo data.
+
+Developed by [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)
 
 ---
 
-© 2025 Abdulloh. Built with ❤️ React 19 + TypeScript 5 + TailwindCSS 4
+## 🇷🇺 Русский
+
+Современное демо-портфолио на React + TypeScript: 3 языка (узбекский, английский, русский), тёмная и светлая тема, адаптивность под любые устройства.
+
+| Технология | Версия |
+|---|---|
+| React | 19.3 |
+| TypeScript | 6.0 |
+| Vite | 8.3 |
+| Tailwind CSS | 4.3 |
+| Material UI | 9.5 |
+| Redux Toolkit | 2.13 |
+
+**Запуск**
+
+```bash
+npm install
+npm run dev      # dev-сервер
+npm run build    # сборка в dist/
+npm run lint
+```
+
+**Форма обратной связи.** Без `.env` форма работает в демо-режиме. Чтобы получать сообщения в Telegram-бот, скопируйте `.env.example` в `.env` (`VITE_BOT_TOKEN`, `VITE_CHAT_ID`). `.env` не попадает в git.
+
+**Структура:** тексты в `src/i18n/` (uz, en, ru), данные в `src/utils/data.ts`, цвета темы в `src/utils/theme.ts`.
+
+> Имя (John Doe), email, город, проекты и отзывы — демо-данные.
+
+Разработчик: [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)

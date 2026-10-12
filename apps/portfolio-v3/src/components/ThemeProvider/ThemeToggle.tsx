@@ -1,11 +1,14 @@
 import { useTheme } from './index';
+import { useI18n } from '../../i18n';
 
 const ThemeToggle: React.FC = () => {
   const { dark, toggle } = useTheme();
+  const { t } = useI18n();
   return (
     <button
       onClick={toggle}
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={dark ? t.ui.toLight : t.ui.toDark}
+      title={dark ? t.ui.toLight : t.ui.toDark}
       style={{
         width: 44, height: 26, borderRadius: 13, border: 'none',
         cursor: 'pointer', padding: 2, flexShrink: 0,

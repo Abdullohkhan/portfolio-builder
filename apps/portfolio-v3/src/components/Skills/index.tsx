@@ -2,11 +2,13 @@ import { useRef, useState, useEffect } from 'react';
 import { useTheme } from '../ThemeProvider';
 import { THEME } from '../../utils/theme';
 import { SKILLS } from '../../utils/data';
+import { useI18n } from '../../i18n';
 
 const EXTRA_TAGS = ['Git', 'GitHub', 'Figma', 'Vite', 'Firebase', 'REST API', 'Axios', 'Zustand', 'ESLint', 'Prettier'];
 
 const Skills: React.FC = () => {
   const { dark } = useTheme();
+  const { t } = useI18n();
   const c = dark ? THEME.dark : THEME.light;
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -22,12 +24,12 @@ const Skills: React.FC = () => {
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#6246EA', fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: 3, marginBottom: 12 }}>
-            <span style={{ width: 32, height: 2, background: '#6246EA', display: 'inline-block', borderRadius: 2 }} />My Skills
+            <span style={{ width: 32, height: 2, background: '#6246EA', display: 'inline-block', borderRadius: 2 }} />{t.skills.label}
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 900, color: c.text, margin: '8px 0 10px' }}>
-            Technologies I <span style={{ background: 'linear-gradient(135deg,#6246EA,#9B6DFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Work With</span>
+            {t.skills.title1} <span style={{ background: 'linear-gradient(135deg,#6246EA,#9B6DFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t.skills.title2}</span>
           </h2>
-          <p style={{ color: c.textMuted, fontFamily: "'DM Sans',sans-serif", fontSize: 15, maxWidth: 480, margin: '0 auto' }}>I constantly learn and improve. Here are the core tools I use every day.</p>
+          <p style={{ color: c.textMuted, fontFamily: "'DM Sans',sans-serif", fontSize: 15, maxWidth: 480, margin: '0 auto' }}>{t.skills.text}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -51,7 +53,7 @@ const Skills: React.FC = () => {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 36 }}>
-          <p style={{ fontSize: 13, color: c.textSub, marginBottom: 12, fontFamily: "'DM Sans',sans-serif" }}>Also familiar with:</p>
+          <p style={{ fontSize: 13, color: c.textSub, marginBottom: 12, fontFamily: "'DM Sans',sans-serif" }}>{t.skills.also}</p>
           <div className="flex flex-wrap justify-center gap-2">
             {EXTRA_TAGS.map(tag => (
               <span key={tag} style={{ padding: '6px 14px', background: c.bgCard, border: `1px solid ${c.borderMid}`, borderRadius: 50, fontSize: 12, fontWeight: 600, color: c.textMuted, fontFamily: "'DM Sans',sans-serif" }}>{tag}</span>

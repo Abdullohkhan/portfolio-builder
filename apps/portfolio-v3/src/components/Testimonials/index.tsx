@@ -2,22 +2,25 @@ import { useState } from 'react';
 import { useTheme } from '../ThemeProvider';
 import { THEME } from '../../utils/theme';
 import { TESTIMONIALS } from '../../utils/data';
+import { useI18n } from '../../i18n';
 
 const Testimonials: React.FC = () => {
   const { dark } = useTheme();
+  const { t: tr } = useI18n();
   const c = dark ? THEME.dark : THEME.light;
   const [cur, setCur] = useState(0);
-  const t = TESTIMONIALS[cur];
+  const list = TESTIMONIALS.map((item, i) => ({ ...item, ...tr.testimonials.items[i] }));
+  const t = list[cur];
 
   return (
     <section id="testimonials" style={{ padding: '96px 0', background: c.bg }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#6246EA', fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: 3, marginBottom: 12 }}>
-            <span style={{ width: 32, height: 2, background: '#6246EA', display: 'inline-block', borderRadius: 2 }} />Testimonials
+            <span style={{ width: 32, height: 2, background: '#6246EA', display: 'inline-block', borderRadius: 2 }} />{tr.testimonials.label}
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 900, color: c.text, margin: '8px 0' }}>
-            Client <span style={{ background: 'linear-gradient(135deg,#6246EA,#9B6DFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Reviews</span>
+            {tr.testimonials.title1} <span style={{ background: 'linear-gradient(135deg,#6246EA,#9B6DFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{tr.testimonials.title2}</span>
           </h2>
         </div>
 
@@ -49,7 +52,7 @@ const Testimonials: React.FC = () => {
 
           {/* List */}
           <div className="flex flex-col gap-3">
-            {TESTIMONIALS.map((tt, i) => (
+            {list.map((tt, i) => (
               <button key={tt.id} onClick={() => setCur(i)} style={{ textAlign: 'left', padding: '14px 16px', borderRadius: 16, border: `2px solid ${i === cur ? '#6246EA' : c.border}`, background: i === cur ? (dark ? 'rgba(98,70,234,.1)' : 'rgba(98,70,234,.04)') : c.bgCard, cursor: 'pointer', transition: 'all .2s', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 38, height: 38, borderRadius: '50%', background: tt.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: 12, flexShrink: 0 }}>{tt.avatar}</div>
                 <div style={{ minWidth: 0 }}>
