@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-builder",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix apps/react-portfolio install && npm --prefix apps/bootstrap-portfolio install",
+    "dev:react": "npm --prefix apps/react-portfolio run dev",
+    "dev:bootstrap": "npm --prefix apps/bootstrap-portfolio start",
+    "dev:jack": "npx serve apps/jack-portfolio",
+    "build:react": "npm --prefix apps/react-portfolio run build",
+    "build:bootstrap": "npm --prefix apps/bootstrap-portfolio run build"
+  }
+}

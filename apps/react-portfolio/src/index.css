@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* ── Custom theme tokens for Tailwind v4 ── */
+@theme {
+  --color-primary:      #6246EA;
+  --color-primary-light:#9B6DFF;
+  --color-primary-dark: #4A35C8;
+  --color-accent:       #E45858;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --animate-float:    float 6s ease-in-out infinite;
+  --animate-slide-up: slideUp .7s ease forwards;
+  --animate-fade-in:  fadeIn .8s ease forwards;
+  --animate-morph:    morph 8s ease-in-out infinite;
+}
+
+@keyframes float    { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-18px) } }
+@keyframes slideUp  { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
+@keyframes morph    {
+  0%,100% { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55% }
+  33%     { border-radius: 45% 55% 40% 60% / 55% 40% 60% 45% }
+  66%     { border-radius: 55% 45% 60% 40% / 40% 60% 45% 55% }
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; }
+body  { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Syne', sans-serif; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #6246EA; border-radius: 3px; }
+
+/* ── Selection ── */
+::selection { background: rgba(98,70,234,.2); color: #6246EA; }
