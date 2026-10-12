@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jack - personal portfolio</title>
+  <title>John Doe — Portfolio</title>
+  <meta name="description" content="Demo portfolio — Abdulloh tomonidan ishlab chiqilgan">
 
   <!-- 
     - favicon
@@ -37,23 +38,24 @@
     <div class="container">
 
       <h1 class="h1 logo">
-        <a href="#">Jack<span>.</span></a>
+        <a href="#">John<span>.</span></a>
       </h1>
 
       <div class="navbar-actions">
 
-        <select name="language" id="lang">
+        <select name="language" id="lang" aria-label="Language" data-lang-select>
+          <option value="uz">Uz</option>
           <option value="en">En</option>
-          <option value="ar">Ar</option>
+          <option value="ru">Ru</option>
         </select>
 
-        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
+        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-i18n-attr="title:theme;aria-label:theme" data-theme-btn>
           <span class="icon"></span>
         </button>
 
       </div>
 
-      <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
+      <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-i18n-attr="title:menu;aria-label:menu" data-nav-toggle-btn>
         <span class="one"></span>
         <span class="two"></span>
         <span class="three"></span>
@@ -63,23 +65,23 @@
         <ul class="navbar-list">
 
           <li>
-            <a href="#home" class="navbar-link">Home.</a>
+            <a href="#home" class="navbar-link" data-i18n="nav.home">Home.</a>
           </li>
 
           <li>
-            <a href="#about" class="navbar-link">About.</a>
+            <a href="#about" class="navbar-link" data-i18n="nav.about">About.</a>
           </li>
 
           <li>
-            <a href="#skills" class="navbar-link">Skills.</a>
+            <a href="#skills" class="navbar-link" data-i18n="nav.skills">Skills.</a>
           </li>
 
           <li>
-            <a href="#portfolio" class="navbar-link">Portfolio.</a>
+            <a href="#portfolio" class="navbar-link" data-i18n="nav.portfolio">Portfolio.</a>
           </li>
 
           <li>
-            <a href="#contact" class="navbar-link">Contact.</a>
+            <a href="#contact" class="navbar-link" data-i18n="nav.contact">Contact.</a>
           </li>
 
         </ul>
@@ -114,16 +116,16 @@
 
         <div class="hero-content">
 
-          <h2 class="h2 hero-title">We Design & Build Creative Products</h2>
+          <h2 class="h2 hero-title" data-i18n="hero.title">We Design & Build Creative Products</h2>
 
-          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="hero.cta">Get in touch</a>
 
         </div>
 
         <ul class="hero-social-list">
 
           <li>
-            <a href="#" class="hero-social-link">
+            <a href="#" class="hero-social-link" data-demo>
               <ion-icon name="logo-facebook"></ion-icon>
 
               <div class="tooltip">Facebook</div>
@@ -131,7 +133,7 @@
           </li>
 
           <li>
-            <a href="#" class="hero-social-link">
+            <a href="#" class="hero-social-link" data-demo>
               <ion-icon name="logo-twitter"></ion-icon>
 
               <div class="tooltip">Twitter</div>
@@ -139,7 +141,7 @@
           </li>
 
           <li>
-            <a href="#" class="hero-social-link">
+            <a href="#" class="hero-social-link" data-demo>
               <ion-icon name="logo-linkedin"></ion-icon>
 
               <div class="tooltip">Linkedin</div>
@@ -148,7 +150,7 @@
 
         </ul>
 
-        <a href="#stats" class="scroll-down">Scroll</a>
+        <a href="#stats" class="scroll-down" data-i18n="hero.scroll">Scroll</a>
 
       </section>
 
@@ -164,14 +166,14 @@
         <ul class="stats-list">
 
           <li>
-            <a href="#" class="stats-card">
+            <a href="#portfolio" class="stats-card">
 
               <div class="card-icon">
                 <img src="./assets/images/stats-card_icon-1.png" alt="Badge icon">
               </div>
 
               <h2 class="h2 card-title">
-                12+ <strong>Years of Experience</strong>
+                5+ <strong data-i18n="stats.exp">Years of Experience</strong>
               </h2>
 
               <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -180,14 +182,14 @@
           </li>
 
           <li>
-            <a href="#" class="stats-card">
+            <a href="#portfolio" class="stats-card">
 
               <div class="card-icon">
                 <img src="./assets/images/stats-card_icon-2.png" alt="Checkmark icon">
               </div>
 
               <h2 class="h2 card-title">
-                230+ <strong>Completed Projects</strong>
+                40+ <strong data-i18n="stats.projects">Completed Projects</strong>
               </h2>
 
               <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -196,14 +198,14 @@
           </li>
 
           <li>
-            <a href="#" class="stats-card">
+            <a href="#portfolio" class="stats-card">
 
               <div class="card-icon">
                 <img src="./assets/images/stats-card_icon-3.png" alt="Peoples rating icon">
               </div>
 
               <h2 class="h2 card-title">
-                95+ <strong>Happy Clients</strong>
+                25+ <strong data-i18n="stats.clients">Happy Clients</strong>
               </h2>
 
               <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -231,23 +233,16 @@
 
         <div class="about-content section-content">
 
-          <p class="section-subtitle">About me</p>
+          <p class="section-subtitle" data-i18n="about.subtitle">About me</p>
 
-          <h2 class="h3 section-title">Need a Creative Product? I can Help You!</h2>
+          <h2 class="h3 section-title" data-i18n="about.title">Need a Creative Product? I can Help You!</h2>
 
-          <p class="section-text">
-            Hi! I’m Jack Reacher, and I’m a developer who has passion for building clean web applications with intuitive
-            functionalities. I enjoy the process of turning ideas into reality using creative solutions. I’m always
-            curious about
-            learning new skills, tools, and concepts. In addition to working on various solo full stack projects, I have
-            worked with
-            creative teams, which involves daily stand-ups and communications, source control, and project management.
-          </p>
+          <p class="section-text" data-i18n="about.text"></p>
 
           <div class="btn-group">
-            <button class="btn btn-secondary">Hire me</button>
+            <a href="#contact" class="btn btn-secondary" data-i18n="about.hire">Hire me</a>
 
-            <button class="btn btn-primary">Download cv</button>
+            <button class="btn btn-primary" data-demo data-i18n="about.cv">Download cv</button>
           </div>
 
         </div>
@@ -266,20 +261,16 @@
 
         <div class="skills-content section-content">
 
-          <p class="section-subtitle">My skills</p>
+          <p class="section-subtitle" data-i18n="skills.subtitle">My skills</p>
 
-          <h2 class="h3 section-title">What My Programming Skills Included?</h2>
+          <h2 class="h3 section-title" data-i18n="skills.title">What My Programming Skills Included?</h2>
 
-          <p class="section-text">
-            I develop simple, intuitive and responsive user interface that helps users get things done with less effort
-            and time
-            with those technologies.
-          </p>
+          <p class="section-text" data-i18n="skills.text"></p>
 
           <div class="skills-toggle" data-toggle-box>
-            <button class="toggle-btn active" data-toggle-btn>Skills</button>
+            <button class="toggle-btn active" data-toggle-btn data-i18n="skills.skills">Skills</button>
 
-            <button class="toggle-btn" data-toggle-btn>Tools</button>
+            <button class="toggle-btn" data-toggle-btn data-i18n="skills.tools">Tools</button>
           </div>
 
         </div>
@@ -553,53 +544,49 @@
           <li>
             <div class="project-content section-content">
 
-              <p class="section-subtitle">My Works</p>
+              <p class="section-subtitle" data-i18n="works.subtitle">My Works</p>
 
-              <h2 class="h3 section-title">See My Works Which Will Amaze You!</h2>
+              <h2 class="h3 section-title" data-i18n="works.title">See My Works Which Will Amaze You!</h2>
 
-              <p class="section-text">
-                We develop the best quality website that serves for the long-term. Well-documented, clean, easy and
-                elegant interface
-                helps any non-technical clients.
-              </p>
+              <p class="section-text" data-i18n="works.text"></p>
 
             </div>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-1.png" class="w-100" alt="A macintosh on a yellow background.">
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 01</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 01</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-2.png" class="w-100" alt="On a Blue background, a Wacom and a mouse.">
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 02</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 02</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-3.png" class="w-100"
@@ -607,16 +594,16 @@
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 03</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 03</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-4.png" class="w-100"
@@ -624,16 +611,16 @@
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 04</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 04</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-5.png" class="w-100"
@@ -641,16 +628,16 @@
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 05</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 05</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-6.png" class="w-100"
@@ -658,16 +645,16 @@
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 06</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 06</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <a href="#" class="project-card">
+            <a href="#" class="project-card" data-demo>
 
               <figure class="card-banner">
                 <img src="./assets/images/project-7.png" class="w-100"
@@ -675,16 +662,16 @@
               </figure>
 
               <div class="card-content">
-                <h3 class="h4 card-title">Lorem Ipsum Dolor 07</h3>
+                <h3 class="h4 card-title"><span data-i18n="works.project">Demo Project</span> 07</h3>
 
-                <time class="publish-date" datetime="2022-04">April 2022</time>
+                <time class="publish-date" datetime="2026-01" data-i18n="works.date">January 2026</time>
               </div>
 
             </a>
           </li>
 
           <li>
-            <button class="load-more">Load more work</button>
+            <button class="load-more" data-demo data-i18n="works.more">Load more work</button>
           </li>
 
         </ul>
@@ -703,13 +690,11 @@
 
         <div class="contact-content section-content">
 
-          <p class="section-subtitle">Contact</p>
+          <p class="section-subtitle" data-i18n="contact.subtitle">Contact</p>
 
-          <h2 class="h3 section-title">Have You Any Project? Please Drop a Message</h2>
+          <h2 class="h3 section-title" data-i18n="contact.title">Have You Any Project? Please Drop a Message</h2>
 
-          <p class="section-text">
-            Get in touch and let me know how i can help. Fill out the form and i’ll be in touch as soon as possible.
-          </p>
+          <p class="section-text" data-i18n="contact.text"></p>
 
           <ul class="contact-list">
 
@@ -720,11 +705,9 @@
               </div>
 
               <div class="wrapper">
-                <h3 class="h4 contact-item-title">Address:</h3>
+                <h3 class="h4 contact-item-title" data-i18n="contact.address">Address:</h3>
 
-                <address class="contact-info">
-                  941 Saqrqorish Road, alandalos, grnata, wa 47122-4194
-                </address>
+                <address class="contact-info" data-i18n="contact.addressValue">1 Demo Street, Tashkent (demo)</address>
               </div>
 
             </li>
@@ -736,11 +719,11 @@
               </div>
 
               <div class="wrapper">
-                <h3 class="h4 contact-item-title">Phone:</h3>
+                <h3 class="h4 contact-item-title" data-i18n="contact.phone">Phone:</h3>
 
-                <a href="tel:01234567789" class="contact-info">(01) 234 567 789</a>
+                <a href="tel:+998000000000" class="contact-info">+998 00 000 00 00</a>
 
-                <a href="tel:09765432200" class="contact-info">(09) 765 432 200</a>
+                <a href="tel:+998000000001" class="contact-info">+998 00 000 00 01</a>
               </div>
 
             </li>
@@ -754,9 +737,9 @@
               <div class="wrapper">
                 <h3 class="h4 contact-item-title">Email:</h3>
 
-                <a href="mailto:info@jack.com" class="contact-info">info@jack.com</a>
+                <a href="mailto:demo@example.com" class="contact-info">demo@example.com</a>
 
-                <a href="mailto:support@jack.com" class="contact-info">support@jack.com</a>
+                <a href="mailto:hello@example.com" class="contact-info">hello@example.com</a>
               </div>
 
             </li>
@@ -765,7 +748,7 @@
               <ul class="contac-social-list">
 
                 <li>
-                  <a href="#" class="contact-social-link">
+                  <a href="#" class="contact-social-link" data-demo>
                     <div class="tooltip">Facebook</div>
 
                     <ion-icon name="logo-facebook"></ion-icon>
@@ -773,7 +756,7 @@
                 </li>
 
                 <li>
-                  <a href="#" class="contact-social-link">
+                  <a href="#" class="contact-social-link" data-demo>
                     <div class="tooltip">Twitter</div>
 
                     <ion-icon name="logo-twitter"></ion-icon>
@@ -781,7 +764,7 @@
                 </li>
 
                 <li>
-                  <a href="#" class="contact-social-link">
+                  <a href="#" class="contact-social-link" data-demo>
                     <div class="tooltip">Linkedin</div>
 
                     <ion-icon name="logo-linkedin"></ion-icon>
@@ -789,7 +772,7 @@
                 </li>
 
                 <li>
-                  <a href="#" class="contact-social-link">
+                  <a href="#" class="contact-social-link" data-demo>
                     <div class="tooltip">Youtube</div>
 
                     <ion-icon name="logo-youtube"></ion-icon>
@@ -803,15 +786,15 @@
 
         </div>
 
-        <form action="" class="contact-form">
+        <form action="" class="contact-form" data-contact-form>
 
           <div class="form-wrapper">
 
-            <label for="name" class="form-label">Name</label>
+            <label for="name" class="form-label" data-i18n="form.name">Name</label>
 
             <div class="input-wrapper">
 
-              <input type="text" name="name" id="name" required placeholder="e.g John Doe" class="input-field">
+              <input type="text" name="name" id="name" required placeholder="e.g John Doe" class="input-field" data-i18n-attr="placeholder:form.namePh">
 
               <ion-icon name="person-circle"></ion-icon>
 
@@ -821,11 +804,11 @@
 
           <div class="form-wrapper">
 
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label" data-i18n="form.email">Email</label>
 
             <div class="input-wrapper">
 
-              <input type="email" name="email" id="email" required placeholder="e.g johndoe@mail.com"
+              <input type="email" name="email" id="email" required placeholder="e.g demo@example.com" data-i18n-attr="placeholder:form.emailPh"
                 class="input-field">
 
               <ion-icon name="mail"></ion-icon>
@@ -836,11 +819,11 @@
 
           <div class="form-wrapper">
 
-            <label for="phone" class="form-label">Phone</label>
+            <label for="phone" class="form-label" data-i18n="form.phone">Phone</label>
 
             <div class="input-wrapper">
 
-              <input type="tel" name="phone" id="phone" required placeholder="Phone Number" class="input-field">
+              <input type="tel" name="phone" id="phone" required placeholder="Phone Number" class="input-field" data-i18n-attr="placeholder:form.phonePh">
 
               <ion-icon name="call"></ion-icon>
 
@@ -850,11 +833,11 @@
 
           <div class="form-wrapper">
 
-            <label for="message" class="form-label">Message</label>
+            <label for="message" class="form-label" data-i18n="form.message">Message</label>
 
             <div class="input-wrapper">
 
-              <textarea name="message" id="message" required placeholder="Write message..."
+              <textarea name="message" id="message" required placeholder="Write message..." data-i18n-attr="placeholder:form.messagePh"
                 class="input-field"></textarea>
 
               <ion-icon name="chatbubbles"></ion-icon>
@@ -863,7 +846,7 @@
 
           </div>
 
-          <button type="submit" class="btn btn-primary">Send</button>
+          <button type="submit" class="btn btn-primary" data-i18n="form.send">Send</button>
 
         </form>
 
@@ -885,12 +868,14 @@
 
       <p class="h1 logo">
         <a href="#">
-          Jack<span>.</span>
+          John<span>.</span>
         </a>
       </p>
 
       <p class="copyright">
-        &copy; 2022 <a href="#">codewithsadee</a>. All rights reserved
+        &copy; <span data-year>2026</span> John Doe · <span data-i18n="footer.demo">Demo portfolio</span> ·
+        <span data-i18n="footer.dev">Developed by</span>
+        <a href="https://t.me/Abdulloh_77700" target="_blank" rel="noopener">t.me/Abdulloh_77700</a>
       </p>
 
     </div>
@@ -904,7 +889,7 @@
     - #GO TO TOP
   -->
 
-  <a href="#top" class="go-top" data-go-top title="Go to Top">
+  <a href="#top" class="go-top" data-go-top title="Go to Top" data-i18n-attr="title:top;aria-label:top" aria-label="Go to Top">
     <ion-icon name="arrow-up"></ion-icon>
   </a>
 
@@ -915,13 +900,15 @@
   <!-- 
     - custom js link
   -->
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="./assets/js/i18n.js"></script>
   <script src="./assets/js/script.js"></script>
 
   <!-- 
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@8.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 </body>
 

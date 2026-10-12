@@ -1,56 +1,81 @@
 <div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/jack-portfolio)
-  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/jack-portfolio?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/jack-portfolio?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-  [![YouTube Video Views](https://img.shields.io/youtube/views/DdlVKS7MROY?style=social)](https://youtu.be/DdlVKS7MROY)
 
-  <br />
-  <br />
-  
-  <img src="./readme-images/project-logo.png" />
+# portfolio-v1
 
-  <h2 align="center">Jack - Personal portfolio</h2>
+**🇺🇿 O'zbekcha** · [🇬🇧 English](#-english) · [🇷🇺 Русский](#-русский)
 
-  This website is fully responsive personal portfolio, <br />Responsive for all devices, built using HTML, CSS, and JavaScript.
+<img src="./readme-images/desktop.jpg" alt="portfolio-v1" width="720" />
 
-  <a href="https://codewithsadee.github.io/jack-portfolio/"><strong>➥ Live Demo</strong></a>
+**[➥ Live demo](https://abdullohkhan.github.io/portfolio-builder/v1/)**
 
 </div>
 
-<br />
+## 🇺🇿 O'zbekcha
 
-### Demo Screeshots
+To'liq responsive, 3 tilli (o'zbek, ingliz, rus) va dark/light rejimli shaxsiy portfolio sayti. HTML, CSS va JavaScript'da yozilgan, hech qanday build talab qilinmaydi.
 
-![Jack Portfolio Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+**Imkoniyatlar**
+- Til almashtirgich (Uz / En / Ru) — tanlov brauzerda saqlanadi
+- Dark / light rejim — birinchi kirishda tizim sozlamasiga moslashadi
+- Barcha qurilmalarga moslashuvchan (telefon, planshet, desktop)
+- Demo kontakt forma — xabar hech qayerga yuborilmaydi
 
-### Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
-
-### Run Locally
-
-To run **jack-portfolio** locally, run this command on your git bash:
-
-Linux and macOS:
+**Ishga tushirish**
 
 ```bash
-sudo git clone https://github.com/codewithsadee/jack-portfolio.git
+npx serve .
 ```
 
-Windows:
+yoki `index.html` ni brauzerda oching.
+
+> Bu demo portfolio: ism (John Doe), telefon, email va manzil — namunaviy ma'lumotlar.
+
+Ishlab chiqdi: [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)
+
+---
+
+## 🇬🇧 English
+
+A fully responsive personal portfolio website in 3 languages (Uzbek, English, Russian) with dark/light mode. Built with plain HTML, CSS and JavaScript — no build step needed.
+
+**Features**
+- Language switcher (Uz / En / Ru), saved in the browser
+- Dark / light mode, follows the system setting on first visit
+- Responsive on phones, tablets and desktops
+- Demo contact form — messages are not sent anywhere
+
+**Run locally**
 
 ```bash
-git clone https://github.com/codewithsadee/jack-portfolio.git
+npx serve .
 ```
 
-### Contact
+or open `index.html` in a browser.
 
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
+> This is a demo portfolio: the name (John Doe), phone, email and address are placeholders.
 
-### License
+Developed by [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)
 
-This project is **free to use** and does not contains any license.
+---
+
+## 🇷🇺 Русский
+
+Полностью адаптивный сайт-портфолио на 3 языках (узбекский, английский, русский) с тёмной и светлой темой. Написан на HTML, CSS и JavaScript — сборка не нужна.
+
+**Возможности**
+- Переключатель языка (Uz / En / Ru), выбор сохраняется в браузере
+- Тёмная / светлая тема, при первом визите — по настройкам системы
+- Адаптивность для телефонов, планшетов и компьютеров
+- Демо-форма обратной связи — сообщения никуда не отправляются
+
+**Запуск**
+
+```bash
+npx serve .
+```
+
+или откройте `index.html` в браузере.
+
+> Это демо-портфолио: имя (John Doe), телефон, email и адрес — примеры.
+
+Разработчик: [t.me/Abdulloh_77700](https://t.me/Abdulloh_77700)

@@ -80,21 +80,26 @@ themeToggleBtn.addEventListener("click", function () {
     document.body.classList.remove("dark_theme");
     document.body.classList.add("light_theme");
 
-    localStorage.setItem("theme", "light_theme");
+    try { localStorage.setItem("theme", "light_theme"); } catch (e) { /* storage blocked */ }
   } else {
     document.body.classList.add("dark_theme");
     document.body.classList.remove("light_theme");
 
-    localStorage.setItem("theme", "dark_theme");
+    try { localStorage.setItem("theme", "dark_theme"); } catch (e) { /* storage blocked */ }
   }
 
 });
 
 /**
- * check & apply last time selected theme from localStorage
+ * check & apply last time selected theme (or the system preference)
  */
 
-if (localStorage.getItem("theme") === "light_theme") {
+let savedTheme = null;
+try { savedTheme = localStorage.getItem("theme"); } catch (e) { /* storage blocked */ }
+
+const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+
+if (savedTheme === "light_theme" || (!savedTheme && prefersLight)) {
   themeToggleBtn.classList.add("active");
   document.body.classList.remove("dark_theme");
   document.body.classList.add("light_theme");
@@ -103,3 +108,48 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
 }
+
+
+
+/**
+ * language (uz / en / ru)
+ */
+
+const langSelect = document.querySelector("[data-lang-select]");
+
+applyLang(getLang());
+
+langSelect.addEventListener("change", function () { applyLang(this.value); });
+
+
+
+/**
+ * toast for demo links, buttons and the contact form
+ */
+
+const toast = document.querySelector("[data-toast]");
+let toastTimer;
+
+const showToast = function (message) {
+  toast.textContent = message;
+  toast.classList.add("active");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { toast.classList.remove("active"); }, 3000);
+}
+
+document.querySelectorAll("[data-demo]").forEach(function (el) {
+  el.addEventListener("click", function (event) {
+    event.preventDefault();
+    showToast(t("demo"));
+  });
+});
+
+const contactForm = document.querySelector("[data-contact-form]");
+
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  contactForm.reset();
+  showToast(t("sent"));
+});
+
+document.querySelector("[data-year]").textContent = new Date().getFullYear();

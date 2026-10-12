@@ -1,6 +1,10 @@
-# Essential Stuff
+# Style guide · Stil qo'llanmasi · Руководство по стилю
 
-## Html import links
+🇺🇿 Sayt dizaynining asosiy qiymatlari: shriftlar, ranglar, o'lchamlar va mavzu o'zgaruvchilari.
+🇬🇧 Core design values of the site: fonts, colors, sizes and theme variables.
+🇷🇺 Основные значения дизайна сайта: шрифты, цвета, размеры и переменные темы.
+
+## HTML import links · HTML ulanishlar · HTML-подключения
 
 Google font
 
@@ -15,13 +19,12 @@ Google font
 Ionicon
 
 ``` html
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@8.1.0/dist/ionicons/ionicons.esm.js"></script>
 ```
 
 ---
 
-## Colors
+## Colors · Ranglar · Цвета
 
 ``` css
 --raw-seinna: hsl(24, 74%, 58%);
@@ -31,7 +34,7 @@ Ionicon
 --white: hsl(0, 0%, 100%);
 ```
 
-## Typography
+## Typography · Tipografiya · Типографика
 
 ``` css
 --ff-saira-stencil-one: "Saira Stencil One", sans-serif; 
@@ -50,19 +53,19 @@ Ionicon
 --fw-700: 700;
 ```
 
-## Transition
+## Transition · Animatsiya · Анимация
 
 ``` css
 --transition-1: 0.25s ease-in-out;
 ```
 
-## Spacing
+## Spacing · Oraliqlar · Отступы
 
 ``` css
 --section-padding: 80px;
 ```
 
-## Border radius
+## Border radius · Burchak radiusi · Скругление
 
 ``` css
 --radius-4: 4px;
@@ -71,9 +74,9 @@ Ionicon
 
 ---
 
-## Theme Variables
+## Theme variables · Mavzu o'zgaruvchilari · Переменные темы
 
-### Dark Mode
+### Dark mode · Qorong'i · Тёмная
 
 ``` css
 --bg-primary: hsl(0, 0%, 12%);
@@ -86,7 +89,7 @@ Ionicon
 --shadow-1: 10px 10px 40px var(--card-shadow);
 ```
 
-### Light Mode
+### Light mode · Yorug' · Светлая
 
 ``` css
 --bg-primary: hsl(0, 0%, 90%);

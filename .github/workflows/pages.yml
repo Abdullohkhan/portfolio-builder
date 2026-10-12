@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [branch2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build portfolio-v2
+        working-directory: apps/portfolio-v2
+        run: npm ci && npx vite build --base=./
+      - name: Build portfolio-v3
+        working-directory: apps/portfolio-v3
+        run: npm ci && npm run build -- --base=./
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp site/index.html _site/
+          cp -r apps/portfolio-v1 _site/v1
+          rm -f _site/v1/README.md _site/v1/style-guide.md
+          rm -rf _site/v1/readme-images
+          cp -r apps/portfolio-v2/dist _site/v2
+          cp -r apps/portfolio-v3/dist _site/v3
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

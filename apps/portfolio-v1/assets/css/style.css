@@ -3,7 +3,7 @@
 \*-----------------------------------*/
 
 /**
- * copyright 2022 codewithsadee
+ * portfolio-v1 — demo portfolio (uz / en / ru, dark & light)
  */
 
 
@@ -331,7 +331,8 @@ body.active { overflow: hidden; }
 
 .navbar-actions select {
   color: var(--color-primary);
-  width: 45px;
+  width: 48px;
+  font-weight: var(--fw-700);
 }
 
 .navbar-actions option {
@@ -913,6 +914,43 @@ textarea.input-field {
   pointer-events: all;
   transform: translateY(0);
 }
+
+
+
+
+
+/*-----------------------------------*\
+ * #TOAST
+\*-----------------------------------*/
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  max-width: calc(100% - 40px);
+  padding: 12px 18px;
+  background: var(--bg-secondary);
+  color: var(--color-primary);
+  font-size: var(--fs-6);
+  text-align: center;
+  border-radius: var(--radius-12);
+  box-shadow: var(--shadow-1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition: var(--transition-1);
+  z-index: 5;
+}
+
+.toast.active {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.copyright span,
+.project-card .card-title span { display: inline; }
+
+.copyright a { text-decoration: underline; }
 
 
 
