@@ -1,14 +1,14 @@
 // ================= CSS =================
 import "../scss/styles.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "boxicons/css/boxicons.min.css";
 import "aos/dist/aos.css";
 import "glightbox/dist/css/glightbox.min.css";
 import "swiper/css";
+import "swiper/css/pagination";
 
 // ================= JS =================
-import * as bootstrap from "bootstrap";
+import "bootstrap";
 import PureCounter from "@srexi/purecounterjs";
 
 // ================= INIT =================

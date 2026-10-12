@@ -1,8 +1,10 @@
 import GLightbox from "glightbox";
 import Isotope from "isotope-layout";
 import Swiper from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 import Typed from "typed.js";
 import AOS from "aos";
+import { applyLang, getLang, t } from "./i18n.js";
 
 (function () {
   "use strict";
@@ -144,20 +146,67 @@ import AOS from "aos";
   }
 
   /**
-   * Hero type effect
+   * Language (uz / en / ru)
    */
-  const typed = select(".typed");
-  if (typed) {
-    let typed_strings = typed.getAttribute("data-typed-items");
-    typed_strings = typed_strings.split(",");
-    new Typed(".typed", {
-      strings: typed_strings,
+  applyLang(getLang());
+  on("change", "[data-lang-select]", function () {
+    applyLang(this.value);
+  });
+
+  /**
+   * Hero type effect (restarts when the language changes)
+   */
+  let typedInstance = null;
+  const startTyped = () => {
+    if (!select(".typed")) return;
+    if (typedInstance) typedInstance.destroy();
+    typedInstance = new Typed(".typed", {
+      strings: t("hero.typed"),
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 2000,
     });
+  };
+  startTyped();
+  document.addEventListener("langchange", startTyped);
+
+  /**
+   * Dark / light theme
+   */
+  const themeBtn = select("[data-theme-toggle]");
+  const setThemeIcon = () => {
+    const dark = document.documentElement.getAttribute("data-bs-theme") === "dark";
+    themeBtn.innerHTML = dark ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+  };
+  if (themeBtn) {
+    setThemeIcon();
+    themeBtn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-bs-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) { /* storage blocked */ }
+      setThemeIcon();
+    });
   }
+
+  /**
+   * Demo links and toast
+   */
+  const toast = select("[data-toast]");
+  let toastTimer;
+  window.showToast = (message) => {
+    toast.textContent = message;
+    toast.classList.add("active");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("active"), 3000);
+  };
+  on("click", "[data-demo]", function (e) {
+    e.preventDefault();
+    window.showToast(t("ui.demo"));
+  }, true);
+
+  const year = select("[data-year]");
+  if (year) year.textContent = new Date().getFullYear();
 
   /**
    * Porfolio isotope and filter
@@ -194,42 +243,10 @@ import AOS from "aos";
   });
 
   /**
-   * Initiate portfolio lightbox
-   */
-  const portfolioLightbox = GLightbox({
-    selector: ".portfolio-lightbox",
-  });
-
-  /**
-   * Initiate portfolio details lightbox
-   */
-  const portfolioDetailsLightbox = GLightbox({
-    selector: ".portfolio-details-lightbox",
-    width: "90%",
-    height: "90vh",
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper(".portfolio-details-slider", {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      type: "bullets",
-      clickable: true,
-    },
-  });
-
-  /**
    * Testimonials slider
    */
   new Swiper(".testimonials-slider", {
+    modules: [Autoplay, Pagination],
     speed: 600,
     loop: true,
     autoplay: {
@@ -244,28 +261,6 @@ import AOS from "aos";
     },
   });
 
-  // const swiper = new Swiper('.swiper', {
-  //   // Optional parameters
-  //   direction: 'vertical',
-  //   loop: true,
-
-  //   // If we need pagination
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //   },
-
-  //   // Navigation arrows
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-
-  //   // And if we need scrollbar
-  //   scrollbar: {
-  //     el: '.swiper-scrollbar',
-  //   },
-  // });
-
   /**
    * Animation on scroll
    */
@@ -279,101 +274,52 @@ import AOS from "aos";
   });
 })();
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  "use strict";
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll(".needs-validation");
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach((form) => {
-    form.addEventListener(
-      "submit",
-      (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
-})();
-
-//  contact form code
+// ================= CONTACT FORM =================
+// Messages go to a Telegram bot when VITE_BOT_TOKEN and VITE_GROUP_TOKEN are set
+// (see .env.example); otherwise the form runs in demo mode.
 
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // send tg bot code here
+    contactForm.classList.add("was-validated");
+    if (!contactForm.checkValidity()) return;
 
     const botToken = import.meta.env.VITE_BOT_TOKEN;
     const groupToken = import.meta.env.VITE_GROUP_TOKEN;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-    const fullName = contactForm.fullName.value;
-    const email = contactForm.email.value;
-    const telegramUsernameOrPhone = contactForm.phoneNumber.value;
-    const message = contactForm.message.value;
+    submitBtn.disabled = true;
+    submitBtn.textContent = t("form.sending");
 
-    let resultText = "Noma'lum telegram username";
+    let message = t("form.demo");
 
-    if (telegramUsernameOrPhone) {
-      const isTelegramUsername = /[a-zA-Z_]/.test(telegramUsernameOrPhone);
+    if (botToken && groupToken) {
+      const text = [
+        "New message",
+        `From: ${contactForm.fullName.value}`,
+        `Email: ${contactForm.email.value}`,
+        `Contact: ${contactForm.phoneNumber.value}`,
+        `Message: ${contactForm.message.value}`,
+      ].join("\n");
 
-      if (isTelegramUsername) {
-        resultText = telegramUsernameOrPhone.startsWith("@")
-          ? telegramUsernameOrPhone
-          : ` @${telegramUsernameOrPhone}`;
-      } else resultText = telegramUsernameOrPhone;
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: groupToken, text }),
+        });
+        message = res.ok ? t("form.sent") : t("form.error");
+      } catch (err) {
+        message = t("form.error");
+      }
     }
 
-    const finalString = `Telegram username | phone number: ${resultText}`;
-
-    const checkedMessage = ` New message \n From: ${
-      fullName ? fullName : "Noma'lum shaxs"
-    } \n Email: ${
-      email ? email : "Noma'lum email"
-    } \n  ${finalString} \n Message: ${message ? message : "Noma'lum xabar"}
-    `;
-
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: groupToken,
-        text: checkedMessage,
-      }),
-    });
-    console.log("Message sent to Telegram bot:", checkedMessage);
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-
-    submitBtn.innerHTML = `
-            <span>Sending...</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin">
-                <circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"/>
-            </svg>
-        `;
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-      submitBtn.innerHTML = `
-                <span>Message Sent!</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="20 6 9 17 4 12"/>
-                </svg>
-            `;
-
-      setTimeout(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        contactForm.reset();
-      }, 2000);
-    }, 1500);
+    window.showToast(message);
+    contactForm.reset();
+    contactForm.classList.remove("was-validated");
+    submitBtn.disabled = false;
+    submitBtn.textContent = t("form.submit");
   });
 }
