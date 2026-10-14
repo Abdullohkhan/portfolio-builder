@@ -21,7 +21,7 @@ npm run dev:v2
 npm run dev:v3
 ```
 
-Har `branch2` push'da GitHub Actions uchala saytni build qilib, GitHub Pages'ga chiqaradi (`.github/workflows/pages.yml`).
+Har `main` push'da GitHub Actions uchala saytni build qilib, GitHub Pages'ga chiqaradi (`.github/workflows/pages.yml`).
 
 > Barcha ism va aloqa ma'lumotlari — demo.
 
@@ -46,7 +46,7 @@ npm run dev:v2
 npm run dev:v3
 ```
 
-Every push to `branch2` builds all three sites and deploys them to GitHub Pages (`.github/workflows/pages.yml`).
+Every push to `main` builds all three sites and deploys them to GitHub Pages (`.github/workflows/pages.yml`).
 
 > All names and contact details are demo data.
 
@@ -71,7 +71,7 @@ npm run dev:v2
 npm run dev:v3
 ```
 
-При каждом push в `branch2` GitHub Actions собирает все три сайта и публикует их на GitHub Pages (`.github/workflows/pages.yml`).
+При каждом push в `main` GitHub Actions собирает все три сайта и публикует их на GitHub Pages (`.github/workflows/pages.yml`).
 
 > Все имена и контакты — демонстрационные.
 
